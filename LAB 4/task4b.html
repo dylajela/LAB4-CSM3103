@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Text Field Events Example</title>
+        <style>
+            input[type="text"] {
+                padding: 10px;
+                font-size: 16px;
+                border: 2px solid #000;
+                outline: none;
+            }
+
+            input[type="text"].focus {
+                border-color: blue;
+                background-color: #f0f8ff;
+            }
+
+            input[type="text"].blur {
+                border-color: red;
+                background-color: #fff0f0;
+            }
+
+            input[type="text"].change {
+                border-color: green;
+                background-color: #f0fff0;
+            }
+
+            input[type="text"].mouseout {
+                background-color: lightgreen;
+            }
+        </style>
+    </head>
+
+    <body>
+
+        <form id="textFieldForm">
+            <label for="textInput">Enter your name</label>
+            <input type="text" id="textInput" name="textInput">
+        </form>
+
+        <script>
+            const textField = document.getElementById('textInput');
+
+            textField.addEventListener('focus', function() {
+                textField.classList.remove('blur', 'change', 'mouseout');
+                textField.classList.add('focus');
+            });
+
+            textField.addEventListener('blur', function() {
+                textField.classList.remove('focus', 'change', 'mouseout');
+                textField.classList.add('blur');
+            });
+
+            textField.addEventListener('change', function() {
+                textField.classList.remove('focus', 'blur', 'mouseout');
+                textField.classList.add('change');
+            });
+
+            textField.addEventListener('mouseout', function() {
+                textField.classList.remove('focus', 'blur', 'change');
+                textField.classList.add('mouseout');
+            });
+        </script>
+
+    </body>
+</html>
